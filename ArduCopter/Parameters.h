@@ -384,6 +384,39 @@ public:
 
         k_param_vehicle = 257, // vehicle common block of parameters
 
+        // ACRL: L1 adaptive controller
+        k_param_Asv = 258,         // As for the velocity state
+        k_param_Asomega,           // As for the rotational velocity state
+        k_param_ctoffq1Thrust,     // LPF1's cutoff frequency for thrust channel
+        k_param_ctoffq1Moment,     // LPF1's cutoff frequency for moment channel
+        k_param_ctoffq2Moment,     // LPF2's cutoff frequency for moment channel
+        k_param_circSpeed,         // circulating speed of the circular trajectory
+        k_param_l1enable = 264,    // enable switch for L1 adaptive controller
+
+        // ACRL: Geometric controller
+        // position P term
+        k_param_GeoCtrl_Kpx = 265, // kpx for geometric controller
+        k_param_GeoCtrl_Kpy,       // kpy for geometric controller
+        k_param_GeoCtrl_Kpz,       // kpz for geometric controller
+        // position D term
+        k_param_GeoCtrl_Kvx,       // kvx for geometric controller
+        k_param_GeoCtrl_Kvy,       // kvy for geometric controller
+        k_param_GeoCtrl_Kvz,       // kvz for geometric controller
+        // angular P term
+        k_param_GeoCtrl_KRx,       // kRx for geometric controller
+        k_param_GeoCtrl_KRy,       // kRy for geometric controller
+        k_param_GeoCtrl_KRz,       // kRz for geometric controller
+        // angular D term
+        k_param_GeoCtrl_KOx,       // kOmegax for geometric controller
+        k_param_GeoCtrl_KOy,       // kOmegay for geometric controller
+        k_param_GeoCtrl_KOz = 276, // kOmegaz for geometric controller
+
+        // ACRL: Other parameters
+        k_param_circRadiusX = 277, // circle radius or figure8's x radius
+        k_param_circRadiusY,       // figure8's y radius (not used for circle radius)
+        k_param_trajIndex,         // index of the trajectory to run
+        k_param_LandFlag = 280,    // flag of landing 
+
         // the k_param_* space is 9-bits in size
         // 511: reserved
     };
@@ -460,6 +493,36 @@ public:
     AP_Int8         fs_crash_check;
     AP_Float        fs_ekf_thresh;
     AP_Int16        gcs_pid_mask;
+
+    // ACRL
+    // L1 adaptive controller
+    AP_Float Asv; // As for the velocity state
+    AP_Float Asomega; // As for the rotational velocity state
+    AP_Float ctoffq1Thrust; // LPF1's cutoff frequency for thrust channel
+    AP_Float ctoffq1Moment; // LPF1's cutoff frequency for moment channel
+    AP_Float ctoffq2Moment; // LPF2's cutoff frequency for moment channel
+    AP_Float circSpeed; // speed for the circular trajectory
+    AP_Int8 l1enable; // enabling switch for L1 adaptive controller
+
+    // Geometric controller
+    AP_Float GeoCtrl_Kpx; // kpx for geometric controller
+    AP_Float GeoCtrl_Kpy; // kpy for geometric controller
+    AP_Float GeoCtrl_Kpz; // kpz for geometric controllerF
+    AP_Float GeoCtrl_Kvx; // kvx for geometric controller
+    AP_Float GeoCtrl_Kvy; // kvy for geometric controller
+    AP_Float GeoCtrl_Kvz; // kvz for geometric controllerF
+    AP_Float GeoCtrl_KRx; // kRx for geometric controller
+    AP_Float GeoCtrl_KRy; // kRy for geometric controller
+    AP_Float GeoCtrl_KRz; // kRz for geometric controllerF
+    AP_Float GeoCtrl_KOx; // kOmegax for geometric controller
+    AP_Float GeoCtrl_KOy; // kOmegay for geometric controller
+    AP_Float GeoCtrl_KOz; // kOmegaz for geometric controller
+
+    // Other parameters
+    AP_Float circRadiusX; // circle radius or figure8's x radius
+    AP_Float circRadiusY; // figure8's y radius (not used for circle radius)
+    AP_Int8 trajIndex;    // index of the trajectory to run
+    AP_Int8 LandFlag;     // flag of landing 
 
 #if MODE_THROW_ENABLED == ENABLED
     AP_Enum<ModeThrow::PreThrowMotorState>         throw_motor_start;
