@@ -785,6 +785,7 @@ void AP_GPS_NMEA::parse_versiona_field(uint16_t term_number, const char *term)
         break;
     case 11:
         strncpy(v.version, _term, sizeof(v.version)-1);
+        v.version[sizeof(v.version)-1] = '\0';
         break;
     case 15:
         strncpy(v.build_date, _term, sizeof(v.build_date)-1);
