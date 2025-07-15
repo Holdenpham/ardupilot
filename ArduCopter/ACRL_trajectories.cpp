@@ -26,15 +26,15 @@ void ACRL_trajectory_takeoff(float timeInThisRun,
     float polyCoef[8] = {-0.1563, 1.0938, -2.6250, 2.1875, 0, 0, 0, 0};
     if (timeInThisRun < 2) // only takeoff during the first 2 seconds when entering mode ADAPTIVE
     {
-        *targetPos = (Vector3f){0, 0, -polyEval(polyCoef, timeInThisRun, 8)};
+        *targetPos = (Vector3f){0, 0, polyEval(polyCoef, timeInThisRun, 8)}; // -polyEval(polyCoef, timeInThisRun for and polyEval(polyCoef, timeInThisRun for z up
         
-        *targetVel = (Vector3f){0, 0, -polyDiffEval(polyCoef, timeInThisRun, 8)};
+        *targetVel = (Vector3f){0, 0, polyDiffEval(polyCoef, timeInThisRun, 8)};
 
-        *targetAcc = (Vector3f){0, 0, -polyDiff2Eval(polyCoef, timeInThisRun, 8)};
+        *targetAcc = (Vector3f){0, 0, polyDiff2Eval(polyCoef, timeInThisRun, 8)};
 
-        *targetJerk = (Vector3f){0, 0, -polyDiff3Eval(polyCoef, timeInThisRun, 8)};
+        *targetJerk = (Vector3f){0, 0, polyDiff3Eval(polyCoef, timeInThisRun, 8)};
 
-        *targetSnap = (Vector3f){0, 0, -polyDiff4Eval(polyCoef, timeInThisRun, 8)};
+        *targetSnap = (Vector3f){0, 0, polyDiff4Eval(polyCoef, timeInThisRun, 8)};
 
         *targetYaw = (Vector2f){1, 0};
         *targetYaw_dot = (Vector2f){0, 0};
@@ -64,7 +64,7 @@ void ACRL_trajectory_transition_to_start(float timeInThisRun,
     float polyCoef[8] = {-0.1563, 1.0938, -2.6250, 2.1875, 0, 0, 0, 0};
     if (timeInThisRun >= timeOffset && timeInThisRun <= timeOffset + 2) // only do the transition in 2-4 seconds when entering mode ADAPTIVE
     {
-        *targetPos = (Vector3f){0, -radiusX * polyEval(polyCoef, timeInThisRun - timeOffset, 8), -1};
+        *targetPos = (Vector3f){0, -radiusX * polyEval(polyCoef, timeInThisRun - timeOffset, 8), 1}; // z = -1 for z down and = 1 for z up
         
         *targetVel = (Vector3f){0, -radiusX * polyDiffEval(polyCoef, timeInThisRun - timeOffset, 8), 0};
 
@@ -215,9 +215,9 @@ void ACRL_trajectory_circle_fixed_yaw(float timeInThisRun,
     netTime = timeInThisRun - timeOffset; // time reference for this speed
 
     #if (!REAL_OR_SITL) // SITL
-        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (1 - cosf(currentSpeed * netTime)), -1};
+        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (1 - cosf(currentSpeed * netTime)), 1};
     #elif (REAL_OR_SITL) // Real 
-        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (-cosf(currentSpeed * netTime)), -1};
+        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (-cosf(currentSpeed * netTime)), 1}; // change z=1 for z up
     #endif
 
     *targetVel = (Vector3f){radius * currentSpeed * cosf(currentSpeed * netTime), radius * currentSpeed * sinf(currentSpeed * netTime), 0};
@@ -306,7 +306,7 @@ void ACRL_trajectory_figure8_fixed_yaw(float timeInThisRun,
 
     if (positiveLoop)
     {
-        *targetPos = (Vector3f){radiusX * sf, radiusY * s2f, -1};
+        *targetPos = (Vector3f){radiusX * sf, radiusY * s2f, 1}; // change z=1 for z up
 
         *targetVel = (Vector3f){radiusX * currentEqvRate * cf, radiusY * 2 * currentEqvRate * c2f, 0};
 
@@ -318,7 +318,7 @@ void ACRL_trajectory_figure8_fixed_yaw(float timeInThisRun,
     }
     else
     {   
-        *targetPos = (Vector3f){-radiusX * sf, radiusY * s2f, -1};
+        *targetPos = (Vector3f){-radiusX * sf, radiusY * s2f, 1}; // change z=1 for z up
 
         *targetVel = (Vector3f){-radiusX * currentEqvRate * cf, radiusY * 2 * currentEqvRate * c2f, 0};
 
