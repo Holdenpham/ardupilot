@@ -819,7 +819,6 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
 
     // first calculate motor speed
     float f1, f2, f3, f4;
-<<<<<<< HEAD
     f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
     f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propelle
     f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
@@ -829,17 +828,6 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
     // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
     // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-=======
-    f1 = (-0.25)*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
-    f2 = (-0.25)*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propelle
-    f3 = (-0.25)*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
-    f4 = (-0.25)*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
-
-    // f1 = (-0.25)*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-    // f2 = (-0.25)*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-    // f3 = (-0.25)*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-    // f4 = (-0.25)*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
->>>>>>> f3006a1aa14aed9aa669422a25cfdae48d60ab1f
 
     // then use the curve
     // double curve
