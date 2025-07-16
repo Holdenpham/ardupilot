@@ -142,9 +142,9 @@ void ACRL_trajectory_circle_variable_yaw(float timeInThisRun,
     netTime = timeInThisRun - timeOffset; // time reference for this speed
 
     #if (!REAL_OR_SITL) // SITL
-        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (1 - cosf(currentSpeed * netTime)), -1};
+        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (1 - cosf(currentSpeed * netTime)), 1};
     #elif (REAL_OR_SITL) // Real 
-        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (-cosf(currentSpeed * netTime)), -1};
+        *targetPos = (Vector3f){radius * sinf(currentSpeed * netTime), radius * (-cosf(currentSpeed * netTime)), 1}; // change z=1 for z up
     #endif
 
     *targetVel = (Vector3f){radius * currentSpeed * cosf(currentSpeed * netTime), radius * currentSpeed * sinf(currentSpeed * netTime), 0};
