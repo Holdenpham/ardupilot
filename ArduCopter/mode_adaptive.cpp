@@ -800,10 +800,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
         // const float D = 0.26;
         // const float a_F = 0.0004963; // rigid propeller, 3 cell battery
         // const float b_F = 0.06199;  // rigid propeller, 3 cell battery
-        // const float a_F_1 = 0.003969; // rigid propeller, 4 cell battery, pwm 11.25-22.5
-        // const float b_F_1 = 0.01729;  // rigid propeller, 4 cell battery, pwm 11.25-22.5
-        // const float a_F_2 = 0.0006009; // rigid propeller, 4 cell battery, pwm 22.5-52.5
-        // const float b_F_2 = 0.09529;  // rigid propeller, 4 cell battery, pwm 22.5-52.5
+        const float a_F_1 = 0.003969; // rigid propeller, 4 cell battery, pwm 11.25-22.5
+        const float b_F_1 = 0.01729;  // rigid propeller, 4 cell battery, pwm 11.25-22.5
+        const float a_F_2 = 0.0006009; // rigid propeller, 4 cell battery, pwm 22.5-52.5
+        const float b_F_2 = 0.09529;  // rigid propeller, 4 cell battery, pwm 22.5-52.5
         // const float k = 0.015711; // M/f
 
         // const float a_F = 0.0005299; // TOMBO propeller, 3 cells
@@ -817,10 +817,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
         // const float k = 0.035923; // M/f
 
         // In Holab
-        const float a_F_1 = 0.004725; // rigid propeller, 4 cell battery, pwm 0-20
-        const float b_F_1 = 0.02515;  // rigid propeller, 4 cell battery, pwm 0-20
-        const float a_F_2 = 0.000928; // rigid propeller, 4 cell battery, pwm 20-100
-        const float b_F_2 = 0.1026;  // rigid propeller, 4 cell battery, pwm 20-100
+        // const float a_F_1 = 0.004725; // rigid propeller, 4 cell battery, pwm 0-20
+        // const float b_F_1 = 0.02515;  // rigid propeller, 4 cell battery, pwm 0-20
+        // const float a_F_2 = 0.000928; // rigid propeller, 4 cell battery, pwm 20-100
+        // const float b_F_2 = 0.1026;  // rigid propeller, 4 cell battery, pwm 20-100
         
         // const float a_F_1 = 0.003436; // tombo cut tip, 4 cell battery, pwm 0-20
         // const float b_F_1 = 0.02001;  // tombo cut tip, 4 cell battery, pwm 0-20
@@ -841,10 +841,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // first calculate motor speed in UIUC
     float f1, f2, f3, f4;
     // In UIUC
-    // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
-    // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propelle
-    // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
-    // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
+    f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
+    f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propelle
+    f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
+    f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
 
     // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
     // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
@@ -852,10 +852,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
 
     // In Holab
-    f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (17.2771)*thrustMomentCmd[3]; // rigid propeller
-    f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (17.2771)*thrustMomentCmd[3]; // rigid propelle
-    f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-17.2771)*thrustMomentCmd[3]; // rigid propeller
-    f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-17.2771)*thrustMomentCmd[3]; // rigid propeller
+    // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (17.2771)*thrustMomentCmd[3]; // rigid propeller
+    // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (17.2771)*thrustMomentCmd[3]; // rigid propelle
+    // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-17.2771)*thrustMomentCmd[3]; // rigid propeller
+    // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-17.2771)*thrustMomentCmd[3]; // rigid propeller
 
     // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (7.7042)*thrustMomentCmd[3]; // tombo cut tip
     // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (7.7042)*thrustMomentCmd[3]; // tombo cut tip
@@ -874,32 +874,32 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
 
     // then use the curve
     // double curve wwith separate point at 22.5 pwwm in UIUC
-    // if (f1 < 0) {w[0] = 0;}
-    // else if (f1 <= 22.5) {w[0] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f1))/(2*a_F_1);}
-    // else {w[0] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f1))/(2*a_F_2);}
-    // if (f2 < 0) {w[1] = 0;}
-    // else if (f2 <= 22.5) {w[1] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f2))/(2*a_F_1);}
-    // else {w[1] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f2))/(2*a_F_2);}
-    // if (f3 < 0) {w[2] = 0;}
-    // else if (f3 <= 22.5) {w[2] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f3))/(2*a_F_1);}
-    // else {w[2] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f3))/(2*a_F_2);}
-    // if (f4 < 0) {w[3] = 0;}
-    // else if (f4 <= 22.5) {w[3] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f4))/(2*a_F_1);}
-    // else {w[3] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f4))/(2*a_F_2);}
-
-    // double curve wwith separate point at 20 pwwm in Holab
     if (f1 < 0) {w[0] = 0;}
-    else if (f1 <= 20) {w[0] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f1))/(2*a_F_1);}
+    else if (f1 <= 22.5) {w[0] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f1))/(2*a_F_1);}
     else {w[0] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f1))/(2*a_F_2);}
     if (f2 < 0) {w[1] = 0;}
-    else if (f2 <= 20) {w[1] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f2))/(2*a_F_1);}
+    else if (f2 <= 22.5) {w[1] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f2))/(2*a_F_1);}
     else {w[1] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f2))/(2*a_F_2);}
     if (f3 < 0) {w[2] = 0;}
-    else if (f3 <= 20) {w[2] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f3))/(2*a_F_1);}
+    else if (f3 <= 22.5) {w[2] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f3))/(2*a_F_1);}
     else {w[2] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f3))/(2*a_F_2);}
     if (f4 < 0) {w[3] = 0;}
-    else if (f4 <= 20) {w[3] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f4))/(2*a_F_1);}
+    else if (f4 <= 22.5) {w[3] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f4))/(2*a_F_1);}
     else {w[3] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f4))/(2*a_F_2);}
+
+    // double curve wwith separate point at 20 pwwm in Holab
+    // if (f1 < 0) {w[0] = 0;}
+    // else if (f1 <= 20) {w[0] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f1))/(2*a_F_1);}
+    // else {w[0] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f1))/(2*a_F_2);}
+    // if (f2 < 0) {w[1] = 0;}
+    // else if (f2 <= 20) {w[1] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f2))/(2*a_F_1);}
+    // else {w[1] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f2))/(2*a_F_2);}
+    // if (f3 < 0) {w[2] = 0;}
+    // else if (f3 <= 20) {w[2] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f3))/(2*a_F_1);}
+    // else {w[2] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f3))/(2*a_F_2);}
+    // if (f4 < 0) {w[3] = 0;}
+    // else if (f4 <= 20) {w[3] = (-b_F_1+sqrtf(b_F_1*b_F_1+4*a_F_1*f4))/(2*a_F_1);}
+    // else {w[3] = (-b_F_2+sqrtf(b_F_2*b_F_2+4*a_F_2*f4))/(2*a_F_2);}
 
     // // single curve
     // w[0] = (-b_F+sqrtf(b_F*b_F+4*a_F*f1))/(2*a_F);
