@@ -1947,10 +1947,15 @@ public:
         const Matrix3f J = {0.023, 0, 0, 0, 0.023, 0, 0, 0, 0.0459}; // This is pulled from SIM_Motor.cpp
         const Matrix3f Jinv = {43.478, 0, 0, 0, 43.478, 0, 0, 0, 21.786}; // hand-computed
     #elif (REAL_OR_SITL) // Real 
-        // const float kg_vehicleMass = 1.15;   // weight for the real drone with rigid propellers
-        const float kg_vehicleMass = 1.18;   // weight for the real drone with Tombo propellers
-        const Matrix3f J = {0.0126, 0, 0, 0, 0.008066, 0, 0, 0, 0.01807}; // This is from the experiment measurement
-        const Matrix3f Jinv = {79.3651, 0, 0, 0, 123.9772, 0, 0, 0, 55.3403}; // hand-computed
+        // In UIUC
+        // const float kg_vehicleMass = 1.18;   // weight for the real drone with Tombo propellers
+        // const Matrix3f J = {0.0126, 0, 0, 0, 0.008066, 0, 0, 0, 0.01807}; // This is from the experiment measurement
+        // const Matrix3f Jinv = {79.3651, 0, 0, 0, 123.9772, 0, 0, 0, 55.3403}; // hand-computed
+        
+        // In Holab
+        const float kg_vehicleMass = 1.239;   // weight for the real drone with Tombo propellers
+        const Matrix3f J = {0.0131, 0, 0, 0, 0.0085, 0, 0, 0, 0.0198}; // This is from the experiment measurement
+        const Matrix3f Jinv = {76.3359, 0, 0, 0, 117.6471, 0, 0, 0, 50.5051}; // hand-computed
     #endif
 
     Vector3f v_prev; // storage of previous step linear velocity
