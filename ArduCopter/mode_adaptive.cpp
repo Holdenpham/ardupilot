@@ -585,7 +585,7 @@ VectorN<float, 4> ModeAdaptive::L1AdaptiveAugmentation(VectorN<float, 4> thrustM
     Vector3f omega_hat;      // state predictor value of rotational speed
     Vector3f e3 = {0, 0, 1}; // unit vector
 
-    const float dt = 0.005; // sampling time (update rate at 400 Hz in UIUC) 200 Hz in Holab
+    const float dt = 0.0025; // sampling time (update rate at 400 Hz in UIUC) 200 Hz in Holab
 
     int8_t l1enable = g.l1enable;
 
