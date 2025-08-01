@@ -846,10 +846,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
     // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
 
-    f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-    f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-    f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
-    f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
+    // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
+    // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
+    // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
+    // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-6.9593)*thrustMomentCmd[3]; // TOMBO propeller
 
     // In Holab
     // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (17.2771)*thrustMomentCmd[3]; // rigid propeller
@@ -862,10 +862,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-7.7042)*thrustMomentCmd[3]; // tombo cut tip
     // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-7.7042)*thrustMomentCmd[3]; // tombo cut tip
 
-    // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
-    // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
-    // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
-    // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
+    f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
+    f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
+    f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
+    f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
 
     // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (22.9991)*thrustMomentCmd[3]; // rigid 9047
     // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (22.9991)*thrustMomentCmd[3]; // rigid 9047
