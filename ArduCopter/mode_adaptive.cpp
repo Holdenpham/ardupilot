@@ -288,24 +288,24 @@ void ModeAdaptive::run()
     motorPWMraw[3] = motorPWM[3];
 
     // // motorPWM saturation, rigid propeller (100 for 3 cell battery, 75 for 4 cell battery)
-    // if (motorPWM[0] < 0) {motorPWM[0] = 0;}
-    // else if (motorPWM[0] > 75) {motorPWM[0] = 75;}
-    // if (motorPWM[1] < 0) {motorPWM[1] = 0;}
-    // else if (motorPWM[1] > 75) {motorPWM[1] = 75;}
-    // if (motorPWM[2] < 0) {motorPWM[2] = 0;}
-    // else if (motorPWM[2] > 75) {motorPWM[2] = 75;}
-    // if (motorPWM[3] < 0) {motorPWM[3] = 0;}
-    // else if (motorPWM[3] > 75) {motorPWM[3] = 75;}
+    if (motorPWM[0] < 0) {motorPWM[0] = 0;}
+    else if (motorPWM[0] > 75) {motorPWM[0] = 75;}
+    if (motorPWM[1] < 0) {motorPWM[1] = 0;}
+    else if (motorPWM[1] > 75) {motorPWM[1] = 75;}
+    if (motorPWM[2] < 0) {motorPWM[2] = 0;}
+    else if (motorPWM[2] > 75) {motorPWM[2] = 75;}
+    if (motorPWM[3] < 0) {motorPWM[3] = 0;}
+    else if (motorPWM[3] > 75) {motorPWM[3] = 75;}
 
     // motorPWM saturation, TOMBO propeller (60 for 3 cell battery, 45 for 4 cell battery)
-    if (motorPWM[0] < 0) {motorPWM[0] = 0;}
-    else if (motorPWM[0] > 50) {motorPWM[0] = 50;}
-    if (motorPWM[1] < 0) {motorPWM[1] = 0;}
-    else if (motorPWM[1] > 50) {motorPWM[1] = 50;}
-    if (motorPWM[2] < 0) {motorPWM[2] = 0;}
-    else if (motorPWM[2] > 50) {motorPWM[2] = 50;}
-    if (motorPWM[3] < 0) {motorPWM[3] = 0;}
-    else if (motorPWM[3] > 50) {motorPWM[3] = 50;}
+    // if (motorPWM[0] < 0) {motorPWM[0] = 0;}
+    // else if (motorPWM[0] > 50) {motorPWM[0] = 50;}
+    // if (motorPWM[1] < 0) {motorPWM[1] = 0;}
+    // else if (motorPWM[1] > 50) {motorPWM[1] = 50;}
+    // if (motorPWM[2] < 0) {motorPWM[2] = 0;}
+    // else if (motorPWM[2] > 50) {motorPWM[2] = 50;}
+    // if (motorPWM[3] < 0) {motorPWM[3] = 0;}
+    // else if (motorPWM[3] > 50) {motorPWM[3] = 50;}
 
     // disarm the vehicle by setting PWM to 1 when landing is completed
     if (landingComplete)
@@ -800,20 +800,20 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
         // const float D = 0.26;
         // const float a_F = 0.0004963; // rigid propeller, 3 cell battery
         // const float b_F = 0.06199;  // rigid propeller, 3 cell battery
-        // const float a_F_1 = 0.003969; // rigid propeller, 4 cell battery, pwm 11.25-22.5
-        // const float b_F_1 = 0.01729;  // rigid propeller, 4 cell battery, pwm 11.25-22.5
-        // const float a_F_2 = 0.0006009; // rigid propeller, 4 cell battery, pwm 22.5-52.5
-        // const float b_F_2 = 0.09529;  // rigid propeller, 4 cell battery, pwm 22.5-52.5
+        const float a_F_1 = 0.003969; // rigid propeller, 4 cell battery, pwm 11.25-22.5
+        const float b_F_1 = 0.01729;  // rigid propeller, 4 cell battery, pwm 11.25-22.5
+        const float a_F_2 = 0.0006009; // rigid propeller, 4 cell battery, pwm 22.5-52.5
+        const float b_F_2 = 0.09529;  // rigid propeller, 4 cell battery, pwm 22.5-52.5
         // const float k = 0.015711; // M/f
 
         // const float a_F = 0.0005299; // TOMBO propeller, 3 cells
         // const float b_F = 0.0386; // TOMBO propeller, 3 cells   
         // const float a_F = 0.0009421; // TOMBO propeller, 4 cells single curve
         // const float b_F = 0.05147; // TOMBO propeller, 4 cells single curve
-        const float a_F_1 = 0.00206; // TOMBO propeller, 4 cell battery, pwm 11.25-22.5
-        const float b_F_1 = 0.02944; // TOMBO propeller, 4 cell battery, pwm 11.25-22.5
-        const float a_F_2 = 0.0007729; // TOMBO propeller, 4 cell battery, pwm 22.5-45
-        const float b_F_2 = 0.05808; // TOMBO propeller, 4 cell battery, pwm 22.5-45
+        // const float a_F_1 = 0.00206; // TOMBO propeller, 4 cell battery, pwm 11.25-22.5
+        // const float b_F_1 = 0.02944; // TOMBO propeller, 4 cell battery, pwm 11.25-22.5
+        // const float a_F_2 = 0.0007729; // TOMBO propeller, 4 cell battery, pwm 22.5-45
+        // const float b_F_2 = 0.05808; // TOMBO propeller, 4 cell battery, pwm 22.5-45
         // const float k = 0.035923; // M/f
 
         // In Holab
@@ -841,10 +841,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // first calculate motor speed in UIUC
     float f1, f2, f3, f4;
     // In UIUC
-    // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
-    // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propelle
-    // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
-    // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
+    f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propeller
+    f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (15.9124)*thrustMomentCmd[3]; // rigid propelle
+    f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
+    f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-15.9124)*thrustMomentCmd[3]; // rigid propeller
 
     // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
     // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (6.9593)*thrustMomentCmd[3]; // TOMBO propeller
@@ -862,10 +862,10 @@ VectorN<float, 4> ModeAdaptive::motorMixing_const(VectorN<float, 4> thrustMoment
     // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-7.7042)*thrustMomentCmd[3]; // tombo cut tip
     // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-7.7042)*thrustMomentCmd[3]; // tombo cut tip
 
-    f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
-    f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
-    f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
-    f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
+    // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
+    // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (12.0366)*thrustMomentCmd[3]; // tombo origin
+    // f3 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
+    // f4 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (-12.0366)*thrustMomentCmd[3]; // tombo origin
 
     // f1 = 0.25*thrustMomentCmd[0] + (-1.4493)*thrustMomentCmd[1] + (1.9231)*thrustMomentCmd[2] + (22.9991)*thrustMomentCmd[3]; // rigid 9047
     // f2 = 0.25*thrustMomentCmd[0] + (1.4493)*thrustMomentCmd[1] + (-1.9231)*thrustMomentCmd[2] + (22.9991)*thrustMomentCmd[3]; // rigid 9047
